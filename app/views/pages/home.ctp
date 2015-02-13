@@ -1,0 +1,1 @@
+<?php echo $this->element('articles/feed', array($articles)); ?>
