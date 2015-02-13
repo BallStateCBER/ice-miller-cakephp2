@@ -16,32 +16,35 @@
 		paste_strip_class_attributes: "all",
 		paste_remove_spans: false,
 		paste_remove_styles: false,
+		handle_event_callback: function () {
+			form_changed = true;
+		},
 		setup: function(ed) {
 			ed.onInit.add(function(ed) {
 				var textarea = ed.getElement();
 				Element.extend(textarea);
 				var textarea_dimensions = textarea.getDimensions();
 				var width = textarea_dimensions.width;
-				
+
 				// If the editor and the toggle switch have already been loaded, don't re-load the toggle switch
 				if ($(textarea.id + '_tinymce_toggle')) {
 					return;
 				}
-				
+
 				// Mode: <span class="toggle_tinymce_on">Rich Text</span> | <span class="fake_link toggle_tinymce_off" onclick="toggleTinyMCEEditor(\''+textarea.id+'\')">HTML</span>
 				var span1 = new Element('span', {'class': 'toggle_tinymce_on'}).update('Rich Text');
-				var span2 = new Element('span', {'class': 'fake_link toggle_tinymce_off', 'onclick': 'toggleTinyMCEEditor(\''+textarea.id+'\')'}).update('HTML');  
+				var span2 = new Element('span', {'class': 'fake_link toggle_tinymce_off', 'onclick': 'toggleTinyMCEEditor(\''+textarea.id+'\')'}).update('HTML');
 				//var div = new Element('div', {'class': 'toggle_tinymce'}).insert({'top' : 'Mode: ' + span1 + ' | ' + span2});
 				var div = new Element('div', {'id': textarea.id + '_tinymce_toggle', 'class': 'toggle_tinymce', 'style': 'width: ' + width + 'px'}).update('Mode: ');
 				div.insert({'bottom': span1});
 				div.insert({'bottom': span2});
 				div.insert({'bottom': '<br />'});
-				textarea.insert({'before': div}); 
+				textarea.insert({'before': div});
 			});
 		},
 		content_css : '/css/tinymce_custom.css',
 	});
-	
+
 	function toggleTinyMCEEditor(id) {
 		var on_switch = $$('#' + id + '_tinymce_toggle span.toggle_tinymce_on')[0];
 		var off_switch = $$('#' + id + '_tinymce_toggle span.toggle_tinymce_off')[0];
@@ -53,7 +56,7 @@
 			tinyMCE.execCommand('mceRemoveControl', false, id);
 			var deactivated_button = off_switch;
 			var activated_button = on_switch;
-		} 
+		}
 		deactivated_button.removeClassName('fake_link');
 		deactivated_button.onclick = null;
 		activated_button.addClassName('fake_link');
