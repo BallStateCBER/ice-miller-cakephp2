@@ -139,12 +139,6 @@
 							)); ?>
 						</div>
 					</div>
-					<div>
-						<h2>Facebook</h2>
-						<div style="padding: 0;">
-							<iframe src="http://www.facebook.com/plugins/activity.php?site=icemiller.cberdata.org&amp;width=298&amp;height=200&amp;header=false&amp;colorscheme=light&amp;font=verdana&amp;border_color=white&amp;recommendations=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:298px; height:200px;" allowTransparency="true"></iframe>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>
