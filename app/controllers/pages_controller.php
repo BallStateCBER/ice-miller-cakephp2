@@ -12,7 +12,7 @@ class PagesController extends AppController {
 		$this->Auth->allow('*');
 		$this->Auth->deny('admin', 'clear_cache');
 		$this->Auth->authError = 'Sorry, you need to log in first.';
-		$this->paginate['Article']['conditions']['Article.published_date <='] = date('Y-m-d').' 99:99:99';
+		$this->paginate['Article']['conditions']['Article.published_date <='] = date('Y-m-d').' 23:59:59';
 	}
 	
 	function beforeRender() {
@@ -109,7 +109,7 @@ class PagesController extends AppController {
 		
 			'articles' => $this->Article->find('all', array(
 				'conditions' => array(
-					'Article.published_date <=' => date('Y-m-d').' 99:99:99',
+					'Article.published_date <=' => date('Y-m-d').' 23:59:59',
 					'Article.is_published' => 1
 				),
 				'order' => array(

@@ -12,7 +12,7 @@ class ArticlesController extends AppController {
 		$this->Auth->allow('*');
 		$this->Auth->deny('add', 'edit', 'delete', 'publish', 'drafts', 'reindex');
 		$this->require_captcha = false;
-		$this->paginate['Article']['conditions']['Article.published_date <='] = date('Y-m-d').' 99:99:99';
+		$this->paginate['Article']['conditions']['Article.published_date <='] = date('Y-m-d').' 23:59:59';
 	}
 	
 	function beforeRender() {
@@ -60,7 +60,7 @@ class ArticlesController extends AppController {
 				'order' => 'Article.published_date DESC',
 				'conditions' => array(
 					'Article.is_published' => 1,
-					'Article.published_date <=' => date('Y-m-d').' 99:99:99'
+					'Article.published_date <=' => date('Y-m-d').' 23:59:59'
 				),
 				'contain' => array(
 					'User' => array(
@@ -455,7 +455,7 @@ class ArticlesController extends AppController {
 				'conditions' =>  array(
 					"MATCH(SearchIndex.data) AGAINST('$query' $search_mode)",
 					'Article.is_published' => 1,
-					'Article.published_date <=' => date('Y-m-d').' 99:99:99'
+					'Article.published_date <=' => date('Y-m-d').' 23:59:59'
 				),
 				'fields' => array('SearchIndex.id'),
 				'contain' => array(

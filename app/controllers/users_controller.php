@@ -204,7 +204,7 @@ class UsersController extends AppController {
 			'articles' => $this->User->Article->find('all', array(
 				'conditions' => array(
 					'Article.is_published' => 1,
-					'Article.published_date <=' => date('Y-m-d').' 99:99:99',
+					'Article.published_date <=' => date('Y-m-d').' 23:59:59',
 					'Article.user_id' => $id
 				),
 				'order' => array('Article.published_date DESC'),
@@ -217,7 +217,7 @@ class UsersController extends AppController {
 			'article_count' => $this->User->Article->find('count', array(
 				'conditions' => array(
 					'Article.is_published' => 1,
-					'Article.published_date <=' => date('Y-m-d').' 99:99:99',
+					'Article.published_date <=' => date('Y-m-d').' 23:59:59',
 					'Article.user_id' => $id
 				)
 			))
@@ -316,7 +316,7 @@ class UsersController extends AppController {
 						'limit' => 1,
 						'conditions' => array(
 							'Article.is_published' => 1,
-							'Article.published_date <=' => date('Y-m-d').' 99:99:99'
+							'Article.published_date <=' => date('Y-m-d').' 23:59:59'
 						)
 					)
 				),

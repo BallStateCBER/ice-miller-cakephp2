@@ -53,25 +53,25 @@ class AppController extends Controller {
 			),
 			'order' => array(
 				'Article.sticky' => 'desc',
-				'Article.published_date' => 'desc', 
+				'Article.published_date' => 'desc',
 				'Article.id' => 'desc'
 			),
 			'conditions' => array(
-				'Article.is_published' => 1, 
+				'Article.is_published' => 1,
 			),
 			'fields' => array(
-				'Article.id', 
-				'Article.title', 
-				'Article.body', 
-				'Article.published_date', 
-				'Article.is_published', 
+				'Article.id',
+				'Article.title',
+				'Article.body',
+				'Article.published_date',
+				'Article.is_published',
 				'Article.comments_enabled',
 				'Article.user_id',
 				'Article.sticky',
 				'Article.slug'
 			),
 			'contain' => array(
-				'User' => array('fields' => array('User.id', 'User.name')), 
+				'User' => array('fields' => array('User.id', 'User.name')),
 				'Tag' => array('fields' => array('Tag.id', 'Tag.name')),
 				'Comment' => array('fields' => array('Comment.id'))
 			)
